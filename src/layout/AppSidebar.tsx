@@ -29,9 +29,19 @@ const navItems: NavItem[] = [
     path: "/profile",
   },
   {
-    name: "Tables",
+    name: "Users Table",
     icon: <TableIcon />,
-    path: "/basic-tables",
+    path: "/users-table",
+  },
+  {
+    name: "Teachers Table",
+    icon: <TableIcon />,
+    path: "/teachers-table",
+  },
+  {
+    name: "Students Table",
+    icon: <TableIcon />,
+    path: "/students-table",
   },
 ];
 
