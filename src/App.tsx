@@ -9,6 +9,9 @@ import Blank from "./pages/Blank";
 import AppLayout from "./layout/AppLayout";
 import { ScrollToTop } from "./components/common/ScrollToTop";
 import Home from "./pages/Dashboard/Home";
+import UsersTable from "./components/tables/UsersTable";
+import TeachersTable from "./components/tables/TeachersTable";
+import StudentsTable from "./components/tables/StudentsTable";
 
 export default function App() {
   return (
@@ -28,7 +31,9 @@ export default function App() {
             <Route path="/form-elements" element={<FormElements />} />
 
             {/* Tables */}
-            <Route path="/basic-tables" element={<BasicTables />} />
+            <Route path="/users-table" element={<UsersTable />} />
+            <Route path="/teachers-table" element={<TeachersTable />} />
+            <Route path="/students-table" element={<StudentsTable />} />
           </Route>
 
           {/* Auth Layout */}
