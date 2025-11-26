@@ -8,104 +8,68 @@ import {
 
 import Badge from "../ui/badge/Badge";
 
-interface Order {
+interface Student {
   id: number;
-  user: {
-    image: string;
-    name: string;
-    role: string;
-  };
-  projectName: string;
-  team: {
-    images: string[];
-  };
-  status: string;
-  budget: string;
+  full_name: string;
+  image: string;
+  phone: string;
+  pasport: string;
+  group_id: string | number;
+  login: string;
+  password: string;
 }
 
 // Define the table data using the interface
-const tableData: Order[] = [
+const tableData: Student[] = [
   {
     id: 1,
-    user: {
-      image: "/images/user/user-17.jpg",
-      name: "Lindsey Curtis",
-      role: "Web Designer",
-    },
-    projectName: "Agency Website",
-    team: {
-      images: [
-        "/images/user/user-22.jpg",
-        "/images/user/user-23.jpg",
-        "/images/user/user-24.jpg",
-      ],
-    },
-    budget: "3.9K",
-    status: "Active",
+    full_name: "Lindsey Curtis",
+    image: "/images/user/user-17.jpg",
+    phone: "+1 202 555 0188",
+    pasport: "AB1234567",
+    group_id: "G-12",
+    login: "lindsey.curtis",
+    password: "student123",
   },
   {
     id: 2,
-    user: {
-      image: "/images/user/user-18.jpg",
-      name: "Kaiya George",
-      role: "Project Manager",
-    },
-    projectName: "Technology",
-    team: {
-      images: ["/images/user/user-25.jpg", "/images/user/user-26.jpg"],
-    },
-    budget: "24.9K",
-    status: "Pending",
+    full_name: "Kaiya George",
+    image: "/images/user/user-18.jpg",
+    phone: "+1 202 555 0144",
+    pasport: "AC9876543",
+    group_id: "G-9",
+    login: "kaiya.george",
+    password: "student123",
   },
   {
     id: 3,
-    user: {
-      image: "/images/user/user-17.jpg",
-      name: "Zain Geidt",
-      role: "Content Writing",
-    },
-    projectName: "Blog Writing",
-    team: {
-      images: ["/images/user/user-27.jpg"],
-    },
-    budget: "12.7K",
-    status: "Active",
+    full_name: "Zain Geidt",
+    image: "/images/user/user-17.jpg",
+    phone: "+1 202 555 0166",
+    pasport: "AA1122334",
+    group_id: "G-11",
+    login: "zain.geidt",
+    password: "student123",
   },
   {
     id: 4,
-    user: {
-      image: "/images/user/user-20.jpg",
-      name: "Abram Schleifer",
-      role: "Digital Marketer",
-    },
-    projectName: "Social Media",
-    team: {
-      images: [
-        "/images/user/user-28.jpg",
-        "/images/user/user-29.jpg",
-        "/images/user/user-30.jpg",
-      ],
-    },
-    budget: "2.8K",
-    status: "Cancel",
+    full_name: "Abram Schleifer",
+    image: "/images/user/user-20.jpg",
+    phone: "+1 202 555 0119",
+    pasport: "AB4433221",
+    group_id: "G-7",
+    login: "abram.schleifer",
+    password: "student123",
   },
   {
     id: 5,
-    user: {
-      image: "/images/user/user-21.jpg",
-      name: "Carla George",
-      role: "Front-end Developer",
-    },
-    projectName: "Website",
-    team: {
-      images: [
-        "/images/user/user-31.jpg",
-        "/images/user/user-32.jpg",
-        "/images/user/user-33.jpg",
-      ],
-    },
-    budget: "4.5K",
-    status: "Active",
+    full_name: "Carla George",
+    image: "/images/user/user-21.jpg",
+    phone: "+1 202 555 0199",
+    pasport: "AD6677889",
+    group_id: "G-10",
+    login: "carla.george",
+    password: "student123",
   },
 ];
 
@@ -121,96 +85,71 @@ export default function StudentsTable() {
                 isHeader
                 className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400"
               >
-                User
+                Student
               </TableCell>
               <TableCell
                 isHeader
                 className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400"
               >
-                Project Name
+                Phone
               </TableCell>
               <TableCell
                 isHeader
                 className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400"
               >
-                Team
+                Passport
               </TableCell>
               <TableCell
                 isHeader
                 className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400"
               >
-                Status
+                Group ID
               </TableCell>
               <TableCell
                 isHeader
                 className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400"
               >
-                Budget
+                Login
               </TableCell>
             </TableRow>
           </TableHeader>
 
           {/* Table Body */}
           <TableBody className="divide-y divide-gray-100 dark:divide-white/[0.05]">
-            {tableData.map((order) => (
-              <TableRow key={order.id}>
+            {tableData.map((student) => (
+              <TableRow key={student.id}>
                 <TableCell className="px-5 py-4 sm:px-6 text-start">
                   <div className="flex items-center gap-3">
                     <div className="w-10 h-10 overflow-hidden rounded-full">
                       <img
                         width={40}
                         height={40}
-                        src={order.user.image}
-                        alt={order.user.name}
+                        src={student.image}
+                        alt={student.full_name}
                       />
                     </div>
                     <div>
                       <span className="block font-medium text-gray-800 text-theme-sm dark:text-white/90">
-                        {order.user.name}
-                      </span>
-                      <span className="block text-gray-500 text-theme-xs dark:text-gray-400">
-                        {order.user.role}
+                        {student.full_name}
                       </span>
                     </div>
                   </div>
                 </TableCell>
+
                 <TableCell className="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
-                  {order.projectName}
+                  {student.phone}
                 </TableCell>
+
                 <TableCell className="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
-                  <div className="flex -space-x-2">
-                    {order.team.images.map((teamImage, index) => (
-                      <div
-                        key={index}
-                        className="w-6 h-6 overflow-hidden border-2 border-white rounded-full dark:border-gray-900"
-                      >
-                        <img
-                          width={24}
-                          height={24}
-                          src={teamImage}
-                          alt={`Team member ${index + 1}`}
-                          className="w-full size-6"
-                        />
-                      </div>
-                    ))}
-                  </div>
+                  {student.pasport}
                 </TableCell>
+
                 <TableCell className="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
-                  <Badge
-                    size="sm"
-                    color={
-                      order.status === "Active"
-                        ? "success"
-                        : order.status === "Pending"
-                        ? "warning"
-                        : "error"
-                    }
-                  >
-                    {order.status}
-                  </Badge>
+                  {student.group_id}
                 </TableCell>
+
                 <TableCell className="px-4 py-3 text-gray-500 text-theme-sm dark:text-gray-400">
-                  {order.budget}
+                  {student.login}
                 </TableCell>
               </TableRow>
             ))}
