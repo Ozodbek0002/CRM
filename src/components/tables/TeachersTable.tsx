@@ -5,159 +5,149 @@ import {
   TableHeader,
   TableRow,
 } from "../ui/table";
-
 import Badge from "../ui/badge/Badge";
 
-interface Teacher {
-  id: number;
-  full_name: string;
-  image: string;
-  phone: string;
-  pasport: string;
-  groups: string[];
-  email: string;
-  login: string;
-  status: string;
-}
-
-// Define the table data using the interface
-const tableData: Teacher[] = [
+// USERS (mock — as if data comes from /users)
+const usersData = [
   {
     id: 1,
     full_name: "Lindsey Curtis",
-    image: "/images/user/user-17.jpg",
-    phone: "+1 202 555 0188",
-    pasport: "AB1234567",
-    groups: ["Web Design", "UI/UX"],
     email: "LindseyCurtis@gmail.com",
     login: "lindsey.curtis",
-    status: "Active",
+    image: "/images/user/user-17.jpg",
   },
   {
     id: 2,
     full_name: "Kaiya George",
-    image: "/images/user/user-18.jpg",
-    phone: "+1 202 555 0144",
-    pasport: "AC9876543",
-    groups: ["Project Management"],
     email: "KaiyaGeorge@gmail.com",
     login: "kaiya.george",
-    status: "Active",
+    image: "/images/user/user-18.jpg",
   },
   {
     id: 3,
     full_name: "Zain Geidt",
-    image: "/images/user/user-17.jpg",
-    phone: "+1 202 555 0166",
-    pasport: "AA1122334",
-    groups: ["Content Writing"],
     email: "ZainGeidt@gmail.com",
     login: "zain.geidt",
-    status: "Active",
-  },
-  {
-    id: 4,
-    full_name: "Abram Schleifer",
-    image: "/images/user/user-20.jpg",
-    phone: "+1 202 555 0119",
-    pasport: "AB4433221",
-    groups: ["Digital Marketing", "SMM"],
-    email: "AbramSchleifer@gmail.com",
-    login: "abram.schleifer",
-    status: "Active",
-  },
-  {
-    id: 5,
-    full_name: "Carla George",
-    image: "/images/user/user-21.jpg",
-    phone: "+1 202 555 0199",
-    pasport: "AD6677889",
-    groups: ["Front-end Development"],
-    email: "CarlaGeorge@gmail.com",
-    login: "carla.george",
-    status: "Active",
+    image: "/images/user/user-17.jpg",
   },
 ];
+
+// TEACHERS — userId orqali join bo‘ladi
+const teachersData = [
+  {
+    id: 1,
+    userId: 1,
+    phone: "+1 202 555 0188",
+    passport: "AB1234567",
+    groups: ["Web Design", "UI/UX"],
+    status: "Active",
+    cv: "/cv/lindsey.pdf",
+  },
+  {
+    id: 2,
+    userId: 2,
+    phone: "+1 202 555 0144",
+    passport: "AC9876543",
+    groups: ["Project Management"],
+    status: "Active",
+    cv: "/cv/kaiya.pdf",
+  },
+  {
+    id: 3,
+    userId: 3,
+    phone: "+1 202 555 0166",
+    passport: "AA1122334",
+    groups: ["Content Writing"],
+    status: "Active",
+    cv: "/cv/zain.pdf",
+  },
+];
+
+// JOIN — user + teacher maʼlumotlari birlashtiriladi
+const tableData = teachersData.map((t) => {
+  const user = usersData.find((u) => u.id === t.userId);
+  return {
+    ...t,
+    ...user,
+  };
+});
 
 export default function TeachersTable() {
   return (
     <div className="overflow-hidden rounded-xl border border-gray-200 bg-white dark:border-white/[0.05] dark:bg-white/[0.03]">
       <div className="max-w-full overflow-x-auto">
         <Table>
-          {/* Table Header */}
+          {/* Header */}
           <TableHeader className="border-b border-gray-100 dark:border-white/[0.05]">
             <TableRow>
               <TableCell
                 isHeader
-                className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400"
+                className="px-5 py-3 font-medium text-gray-500 text-theme-xs"
               >
                 Teacher
               </TableCell>
-
               <TableCell
                 isHeader
-                className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400"
+                className="px-5 py-3 font-medium text-gray-500 text-theme-xs"
               >
                 Email
               </TableCell>
-
               <TableCell
                 isHeader
-                className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400"
+                className="px-5 py-3 font-medium text-gray-500 text-theme-xs"
               >
                 Phone
               </TableCell>
-
               <TableCell
                 isHeader
-                className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400"
+                className="px-5 py-3 font-medium text-gray-500 text-theme-xs"
               >
                 Passport
               </TableCell>
-
               <TableCell
                 isHeader
-                className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400"
+                className="px-5 py-3 font-medium text-gray-500 text-theme-xs"
               >
                 Groups
               </TableCell>
-
               <TableCell
                 isHeader
-                className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400"
+                className="px-5 py-3 font-medium text-gray-500 text-theme-xs"
               >
                 Login
               </TableCell>
-
               <TableCell
                 isHeader
-                className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400"
+                className="px-5 py-3 font-medium text-gray-500 text-theme-xs"
+              >
+                CV
+              </TableCell>
+              <TableCell
+                isHeader
+                className="px-5 py-3 font-medium text-gray-500 text-theme-xs"
               >
                 Status
               </TableCell>
             </TableRow>
           </TableHeader>
 
-          {/* Table Body */}
+          {/* Body */}
           <TableBody className="divide-y divide-gray-100 dark:divide-white/[0.05]">
             {tableData.map((teacher) => (
               <TableRow key={teacher.id}>
-                {/* Avatar + Name */}
-                <TableCell className="px-5 py-4 sm:px-6 text-start">
+                {/* Teacher avatar + name */}
+                <TableCell className="px-5 py-4 text-start">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 overflow-hidden rounded-full">
-                      <img
-                        width={40}
-                        height={40}
-                        src={teacher.image}
-                        alt={teacher.full_name}
-                      />
-                    </div>
+                    <img
+                      src={teacher.image}
+                      alt={teacher.full_name}
+                      className="w-10 h-10 rounded-full"
+                    />
                     <div>
-                      <span className="block font-medium text-gray-800 text-theme-sm dark:text-white/90">
+                      <span className="block font-medium text-gray-800 dark:text-white">
                         {teacher.full_name}
                       </span>
-                      <span className="block text-gray-500 text-theme-xs dark:text-gray-400">
+                      <span className="text-gray-500 text-theme-xs">
                         Teacher
                       </span>
                     </div>
@@ -165,25 +155,25 @@ export default function TeachersTable() {
                 </TableCell>
 
                 {/* Email */}
-                <TableCell className="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
+                <TableCell className="px-4 py-3 text-gray-500">
                   {teacher.email}
                 </TableCell>
 
                 {/* Phone */}
-                <TableCell className="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
+                <TableCell className="px-4 py-3 text-gray-500">
                   {teacher.phone}
                 </TableCell>
 
                 {/* Passport */}
-                <TableCell className="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
-                  {teacher.pasport}
+                <TableCell className="px-4 py-3 text-gray-500">
+                  {teacher.passport}
                 </TableCell>
 
                 {/* Groups */}
-                <TableCell className="px-4 py-3 text-start">
+                <TableCell className="px-4 py-3">
                   <div className="flex gap-2 flex-wrap">
-                    {teacher.groups.map((group, idx) => (
-                      <Badge key={idx} size="sm" color="primary">
+                    {teacher.groups.map((group, i) => (
+                      <Badge key={i} size="sm" color="primary">
                         {group}
                       </Badge>
                     ))}
@@ -191,12 +181,23 @@ export default function TeachersTable() {
                 </TableCell>
 
                 {/* Login */}
-                <TableCell className="px-4 py-3 text-gray-500 text-theme-sm dark:text-gray-400">
+                <TableCell className="px-4 py-3 text-gray-500">
                   {teacher.login}
                 </TableCell>
 
+                {/* CV */}
+                <TableCell className="px-4 py-3">
+                  <a
+                    href={teacher.cv}
+                    className="text-blue-500 underline text-sm"
+                    target="_blank"
+                  >
+                    View CV
+                  </a>
+                </TableCell>
+
                 {/* Status */}
-                <TableCell className="px-4 py-3 text-start">
+                <TableCell className="px-4 py-3">
                   <Badge
                     size="sm"
                     color={
