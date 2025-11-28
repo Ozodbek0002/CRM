@@ -14,6 +14,7 @@ import StudentsTable from "./components/tables/StudentsTable";
 import RoomsTable from "./components/tables/RoomsTable";
 import GroupsTable from "./components/tables/GroupsTable";
 import CoursesTable from "./components/tables/CoursesTable";
+import ProtectedRoute from "./components/auth/ProtectedRoute";
 
 export default function App() {
   return (
@@ -21,29 +22,31 @@ export default function App() {
       <Router>
         <ScrollToTop />
         <Routes>
-          {/* Dashboard Layout */}
-          <Route element={<AppLayout />}>
-            <Route index path="/" element={<Home />} />
-
-            {/* Others Page */}
-            <Route path="/profile" element={<UserProfiles />} />
-            <Route path="/blank" element={<Blank />} />
-
-            {/* Forms */}
-            <Route path="/form-elements" element={<FormElements />} />
-
-            {/* Tables */}
-            <Route path="/users-table" element={<UsersTable />} />
-            <Route path="/teachers-table" element={<TeachersTable />} />
-            <Route path="/students-table" element={<StudentsTable />} />
-            <Route path="/rooms-table" element={<RoomsTable />} />
-            <Route path="/groups-table" element={<GroupsTable />} />
-            <Route path="/courses-table" element={<CoursesTable />} />
-          </Route>
-
-          {/* Auth Layout */}
+          {/* Auth Layout - ochiq sahifalar */}
           <Route path="/signin" element={<SignIn />} />
           <Route path="/signup" element={<SignUp />} />
+
+          {/* Himoyalangan sahifalar */}
+          <Route element={<ProtectedRoute />}>
+            <Route element={<AppLayout />}>
+              <Route index path="/" element={<Home />} />
+
+              {/* Others Page */}
+              <Route path="/profile" element={<UserProfiles />} />
+              <Route path="/blank" element={<Blank />} />
+
+              {/* Forms */}
+              <Route path="/form-elements" element={<FormElements />} />
+
+              {/* Tables */}
+              <Route path="/users-table" element={<UsersTable />} />
+              <Route path="/teachers-table" element={<TeachersTable />} />
+              <Route path="/students-table" element={<StudentsTable />} />
+              <Route path="/rooms-table" element={<RoomsTable />} />
+              <Route path="/groups-table" element={<GroupsTable />} />
+              <Route path="/courses-table" element={<CoursesTable />} />
+            </Route>
+          </Route>
 
           {/* Fallback Route */}
           <Route path="*" element={<NotFound />} />
