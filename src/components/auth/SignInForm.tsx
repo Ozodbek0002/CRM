@@ -5,9 +5,11 @@ import Label from "../form/Label";
 import Input from "../form/input/InputField";
 import Checkbox from "../form/input/Checkbox";
 import Button from "../ui/button/Button";
+import { useAuth } from "../../context/AuthContext";
 
 export default function SignInForm() {
   const navigate = useNavigate();
+  const { login } = useAuth();
   const [showPassword, setShowPassword] = useState(false);
   const [isChecked, setIsChecked] = useState(false);
   const [email, setEmail] = useState("");
@@ -38,9 +40,8 @@ export default function SignInForm() {
 
       const data = await response.json();
 
-      // Tokenlarni saqlash
-      localStorage.setItem("access_token", data.access_token);
-      localStorage.setItem("refresh_token", data.refresh_token);
+      // AuthContext orqali login
+      await login(data.access_token, data.refresh_token);
 
       // Dashboardga yo'naltirish
       navigate("/");

@@ -11,6 +11,7 @@ import Home from "./pages/Dashboard/Home";
 import UsersTable from "./components/tables/UsersTable";
 import TeachersTable from "./components/tables/TeachersTable";
 import StudentsTable from "./components/tables/StudentsTable";
+import ProtectedRoute from "./components/auth/ProtectedRoute";
 
 export default function App() {
   return (
@@ -18,26 +19,28 @@ export default function App() {
       <Router>
         <ScrollToTop />
         <Routes>
-          {/* Dashboard Layout */}
-          <Route element={<AppLayout />}>
-            <Route index path="/" element={<Home />} />
-
-            {/* Others Page */}
-            <Route path="/profile" element={<UserProfiles />} />
-            <Route path="/blank" element={<Blank />} />
-
-            {/* Forms */}
-            <Route path="/form-elements" element={<FormElements />} />
-
-            {/* Tables */}
-            <Route path="/users-table" element={<UsersTable />} />
-            <Route path="/teachers-table" element={<TeachersTable />} />
-            <Route path="/students-table" element={<StudentsTable />} />
-          </Route>
-
-          {/* Auth Layout */}
+          {/* Auth Layout - ochiq sahifalar */}
           <Route path="/signin" element={<SignIn />} />
           <Route path="/signup" element={<SignUp />} />
+
+          {/* Himoyalangan sahifalar */}
+          <Route element={<ProtectedRoute />}>
+            <Route element={<AppLayout />}>
+              <Route index path="/" element={<Home />} />
+
+              {/* Others Page */}
+              <Route path="/profile" element={<UserProfiles />} />
+              <Route path="/blank" element={<Blank />} />
+
+              {/* Forms */}
+              <Route path="/form-elements" element={<FormElements />} />
+
+              {/* Tables */}
+              <Route path="/users-table" element={<UsersTable />} />
+              <Route path="/teachers-table" element={<TeachersTable />} />
+              <Route path="/students-table" element={<StudentsTable />} />
+            </Route>
+          </Route>
 
           {/* Fallback Route */}
           <Route path="*" element={<NotFound />} />
