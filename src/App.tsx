@@ -11,6 +11,9 @@ import Home from "./pages/Dashboard/Home";
 import UsersTable from "./components/tables/UsersTable";
 import TeachersTable from "./components/tables/TeachersTable";
 import StudentsTable from "./components/tables/StudentsTable";
+import RoomsTable from "./components/tables/RoomsTable";
+import GroupsTable from "./components/tables/GroupsTable";
+import CoursesTable from "./components/tables/CoursesTable";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 
 export default function App() {
@@ -39,6 +42,9 @@ export default function App() {
               <Route path="/users-table" element={<UsersTable />} />
               <Route path="/teachers-table" element={<TeachersTable />} />
               <Route path="/students-table" element={<StudentsTable />} />
+              <Route path="/rooms-table" element={<RoomsTable />} />
+              <Route path="/groups-table" element={<GroupsTable />} />
+              <Route path="/courses-table" element={<CoursesTable />} />
             </Route>
           </Route>
 
