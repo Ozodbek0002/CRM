@@ -6,7 +6,6 @@ import {
   GridIcon,
   HorizontaLDots,
   TableIcon,
-  UserCircleIcon,
 } from "../icons";
 import { useSidebar } from "../context/SidebarContext";
 
@@ -22,12 +21,7 @@ const navItems: NavItem[] = [
     icon: <GridIcon />,
     name: "Dashboard",
     path: "/",
-  },
-  {
-    icon: <UserCircleIcon />,
-    name: "User Profile",
-    path: "/profile",
-  },
+  }
 ];
 
 const navTables: NavItem[] = [
@@ -278,7 +272,7 @@ const AppSidebar: React.FC = () => {
                 }`}
               >
                 {isExpanded || isHovered || isMobileOpen ? (
-                  "Others Tables"
+                  "Tables"
                 ) : (
                   <HorizontaLDots />
                 )}
