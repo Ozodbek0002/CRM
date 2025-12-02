@@ -4,7 +4,7 @@ import Button from "../ui/button/Button";
 import Input from "../form/input/InputField";
 import Label from "../form/Label";
 import { useAuth } from "../../context/AuthContext";
-import DefaultUserIcon from "../../assets/defaultUser.webp";
+import DefaultUserIcon from "../../assets/defUserIcon.png";
 import axios from "axios";
 import { useState } from "react";
 type APIUser = {

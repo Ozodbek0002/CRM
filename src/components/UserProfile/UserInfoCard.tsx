@@ -3,9 +3,11 @@ import { Modal } from "../ui/modal";
 import Button from "../ui/button/Button";
 import Input from "../form/input/InputField";
 import Label from "../form/Label";
+import { useAuth } from "../../context/AuthContext";
 
 export default function UserInfoCard() {
   const { isOpen, openModal, closeModal } = useModal();
+  const { user } = useAuth();
   const handleSave = () => {
     // Handle save logic here
     console.log("Saving changes...");
@@ -25,45 +27,45 @@ export default function UserInfoCard() {
                 First Name
               </p>
               <p className="text-sm font-medium text-gray-800 dark:text-white/90">
-                Musharof
+                {user?.name}
               </p>
             </div>
 
-            <div>
+            {/* <div>
               <p className="mb-2 text-xs leading-normal text-gray-500 dark:text-gray-400">
                 Last Name
               </p>
               <p className="text-sm font-medium text-gray-800 dark:text-white/90">
                 Chowdhury
               </p>
-            </div>
+            </div> */}
 
             <div>
               <p className="mb-2 text-xs leading-normal text-gray-500 dark:text-gray-400">
                 Email address
               </p>
               <p className="text-sm font-medium text-gray-800 dark:text-white/90">
-                randomuser@pimjo.com
+                {user?.email}
               </p>
             </div>
 
-            <div>
+            {/* <div>
               <p className="mb-2 text-xs leading-normal text-gray-500 dark:text-gray-400">
                 Phone
               </p>
               <p className="text-sm font-medium text-gray-800 dark:text-white/90">
                 +09 363 398 46
               </p>
-            </div>
+            </div> */}
 
-            <div>
+            {/* <div>
               <p className="mb-2 text-xs leading-normal text-gray-500 dark:text-gray-400">
                 Bio
               </p>
               <p className="text-sm font-medium text-gray-800 dark:text-white/90">
                 Team Manager
               </p>
-            </div>
+            </div> */}
           </div>
         </div>
 
@@ -110,28 +112,25 @@ export default function UserInfoCard() {
                 <div className="grid grid-cols-1 gap-x-6 gap-y-5 lg:grid-cols-2">
                   <div>
                     <Label>Facebook</Label>
-                    <Input
-                      type="text"
-                      value="https://www.facebook.com/PimjoHQ"
-                    />
+                    <Input type="text" value="https://www.facebook.com" />
                   </div>
 
                   <div>
                     <Label>X.com</Label>
-                    <Input type="text" value="https://x.com/PimjoHQ" />
+                    <Input type="text" value="https://x.com" />
                   </div>
 
                   <div>
                     <Label>Linkedin</Label>
                     <Input
                       type="text"
-                      value="https://www.linkedin.com/company/pimjo"
+                      value="https://www.linkedin.com/company"
                     />
                   </div>
 
                   <div>
                     <Label>Instagram</Label>
-                    <Input type="text" value="https://instagram.com/PimjoHQ" />
+                    <Input type="text" value="https://instagram.com" />
                   </div>
                 </div>
               </div>
@@ -143,28 +142,28 @@ export default function UserInfoCard() {
                 <div className="grid grid-cols-1 gap-x-6 gap-y-5 lg:grid-cols-2">
                   <div className="col-span-2 lg:col-span-1">
                     <Label>First Name</Label>
-                    <Input type="text" value="Musharof" />
+                    <Input type="text" value={user?.name} />
                   </div>
 
-                  <div className="col-span-2 lg:col-span-1">
+                  {/* <div className="col-span-2 lg:col-span-1">
                     <Label>Last Name</Label>
                     <Input type="text" value="Chowdhury" />
-                  </div>
+                  </div> */}
 
                   <div className="col-span-2 lg:col-span-1">
                     <Label>Email Address</Label>
-                    <Input type="text" value="randomuser@pimjo.com" />
+                    <Input type="text" value={user?.email} />
                   </div>
 
-                  <div className="col-span-2 lg:col-span-1">
+                  {/* <div className="col-span-2 lg:col-span-1">
                     <Label>Phone</Label>
                     <Input type="text" value="+09 363 398 46" />
-                  </div>
+                  </div> */}
 
-                  <div className="col-span-2">
+                  {/* <div className="col-span-2">
                     <Label>Bio</Label>
                     <Input type="text" value="Team Manager" />
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>
