@@ -15,6 +15,7 @@ import RoomsTable from "./components/tables/RoomsTable";
 import GroupsTable from "./components/tables/GroupsTable";
 import CoursesTable from "./components/tables/CoursesTable";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
+import BugalteryTable from "./components/tables/BugalteryTable";
 
 export default function App() {
   return (
@@ -45,6 +46,7 @@ export default function App() {
               <Route path="/rooms-table" element={<RoomsTable />} />
               <Route path="/groups-table" element={<GroupsTable />} />
               <Route path="/courses-table" element={<CoursesTable />} />
+              <Route path="/bugaltery-table" element={<BugalteryTable />} />
             </Route>
           </Route>
 
