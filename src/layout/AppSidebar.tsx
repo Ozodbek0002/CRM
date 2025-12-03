@@ -31,6 +31,7 @@ const navTables: NavItem[] = [
   { name: "Groups Table", icon: <TableIcon />, path: "/groups-table" },
   { name: "Rooms Table", icon: <TableIcon />, path: "/rooms-table" },
   { name: "Courses Table", icon: <TableIcon />, path: "/courses-table" },
+  { name: "Bugaltery Table", icon: <TableIcon />, path: "/bugaltery-table" },
 ];
 
 const AppSidebar: React.FC = () => {
