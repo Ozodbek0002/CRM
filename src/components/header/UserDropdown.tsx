@@ -3,7 +3,7 @@ import { DropdownItem } from "../ui/dropdown/DropdownItem";
 import { Dropdown } from "../ui/dropdown/Dropdown";
 import { useNavigate } from "react-router";
 import { useAuth } from "../../context/AuthContext";
-
+import DefaultUserIcon from '../../assets/defUserIcon.png'
 export default function UserDropdown() {
   const navigate = useNavigate();
   const { user, logout } = useAuth();
@@ -28,7 +28,15 @@ export default function UserDropdown() {
         className="flex items-center text-gray-700 dropdown-toggle dark:text-gray-400"
       >
         <span className="mr-3 overflow-hidden rounded-full h-11 w-11">
-          <img src={user?.avatar || "/images/user/owner.jpg"} alt="User" />
+          <img
+            src={user?.avatar || DefaultUserIcon}
+            alt="User Avatar"
+            onError={(e) => {
+              const img = e.target as HTMLImageElement;
+              img.src = DefaultUserIcon;
+            }}
+          />
+
           {/* <img src="/images/user/owner.jpg" alt="User" /> */}
         </span>
 
